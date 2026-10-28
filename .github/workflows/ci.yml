@@ -29,6 +29,7 @@ jobs:
       - run: mypy src
 
   test:
+    needs: [lint, typecheck]
     runs-on: ubuntu-latest
     strategy:
       matrix:
