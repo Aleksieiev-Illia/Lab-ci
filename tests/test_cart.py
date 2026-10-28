@@ -1,6 +1,7 @@
 from unittest.mock import Mock
 
 import pytest
+
 from shop.cart import Cart, Item
 
 
@@ -61,9 +62,7 @@ def test_total_with_discounts(
 
 
 @pytest.mark.parametrize("invalid_discount", [-1.0, 100.1, -0.01])
-def test_total_invalid_discount_raises(
-    cart_with_items: Cart, invalid_discount: float
-) -> None:
+def test_total_invalid_discount_raises(cart_with_items: Cart, invalid_discount: float) -> None:
     with pytest.raises(ValueError, match=r"discount_percent must be in \[0, 100\]"):
         cart_with_items.total(invalid_discount)
 
